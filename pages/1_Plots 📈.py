@@ -39,9 +39,16 @@ with col_plot1:
         'This histogram shows the distribution of the chosen column for the chosen ***Country*** from the sidebar. You can also choose\
              to color the histogram based on the chosen ***Category***.'
         )
-    col_histogram = st.selectbox(label = ':red[Choose a column for Histogram:]', options = num_cols, index=5)
+    
+    a, b, c = st.columns([3, 1, 3])
+
+    with a:
+        col_histogram = st.selectbox(label = ':red[Choose a column for Histogram:]', options = num_cols, index=5)
+    
+    with c:
+        hist_cat = st.pills(label=':red[Choose a category for the histogram:]', options=[None, 'City', 'Room type'], default=None, key='hist_cat')
+
     bins = st.slider(label=':red[Select the number of bins:]', min_value=10, max_value=1000, value=75, step=1)
-    hist_cat = st.pills(label=':red[Choose a category for the histogram:]', options=[None, 'City', 'Room type'], default=None, key='hist_cat')
     fig1 = px.histogram(df1, x=col_histogram, nbins=bins, color=hist_cat, color_discrete_sequence=['indianred'] if hist_cat is None else None)
     histogram = st.plotly_chart(fig1)
 
@@ -51,8 +58,15 @@ with col_plot2:
         'This box plot shows the distribution of the chosen column for the chosen ***Country*** from the sidebar. You can also choose\
              to color the box plot based on the chosen ***Category***.'
         )
-    col_histogram = st.selectbox(label = ':blue[Choose a column for Box Plot:]', options = num_cols, index=5)
-    box_cat = st.pills(label=':blue[Choose a category for the box plot:]', options=[None, 'City', 'Room type'], default=None, key='box_cat')
+    
+    d, e, f = st.columns([3, 1, 3])
+
+    with d:
+        col_histogram = st.selectbox(label = ':blue[Choose a column for Box Plot:]', options = num_cols, index=5)
+    
+    with f:
+        box_cat = st.pills(label=':blue[Choose a category for the box plot:]', options=[None, 'City', 'Room type'], default=None, key='box_cat')
+    
     fig2 = px.box(df1, x=col_histogram, color=box_cat)
     histogram = st.plotly_chart(fig2)
 
