@@ -21,7 +21,7 @@ st.write(
     \n\nThis is a data visualization app of major Airbnb listings across some of the most popular tourist destinations worlwide.\
     The dataset used for this app consists of information about rooms listed on Airbnb.\
     Information come from the [open data website of Airbnb](http://insideairbnb.com/) which covered major cities worldwide.\
-    For anonymizing data, precision of geo-coordinates point is 300m."
+    For anonymizing data, precision of geo-coordinates point is 300m.\n\n**NOTE:** The dataset used for this app was last updated on August, 2020 as per the website."
     )
 
 st.subheader('Dataset Description:')
