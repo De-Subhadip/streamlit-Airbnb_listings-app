@@ -33,6 +33,8 @@ col_plot1, col_plot2 = st.columns(2, border=True)
 
 df1 = df[(df['Country'] == country)]
 
+y_legend = 1.5
+
 with col_plot1:
     st.header(':red[Histogram:]')
     st.write(
@@ -50,7 +52,7 @@ with col_plot1:
 
     bins = st.slider(label=':red-background[**Select the number of bins:**]', min_value=10, max_value=1000, step=1)
     fig1 = px.histogram(df1, x=col_histogram, nbins=bins, color=hist_cat, color_discrete_sequence=['indianred'] if hist_cat is None else None)
-    fig1.update_layout(legend=dict(x=0.5, y=1.2, xanchor='center', yanchor='top', orientation="h"), height=500)
+    fig1.update_layout(legend=dict(x=0.5, y=y_legend if country == 'United states' else 1.2, xanchor='center', yanchor='top', orientation="h"), height=500)
     histogram = st.plotly_chart(fig1)
 
 
@@ -70,7 +72,7 @@ with col_plot2:
         box_cat = st.pills(label=':blue-background[**Category for the Box Plot:**]', options=[None, 'City', 'Room type'], default=[None], key='box_cat')
     
     fig2 = px.box(df1, x=col_histogram, color=box_cat)
-    fig2.update_layout(legend=dict(x=0.5, y=1.2, xanchor='center', yanchor='top', orientation="h"), height=600)
+    fig2.update_layout(legend=dict(x=0.5, y=y_legend if country == 'United states' else 1.2, xanchor='center', yanchor='top', orientation="h"), height=600)
     histogram = st.plotly_chart(fig2)
 
 
