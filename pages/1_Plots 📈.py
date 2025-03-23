@@ -72,7 +72,7 @@ with col_plot2:
         box_cat = st.pills(label=':blue-background[**Category for the Box Plot:**]', options=[None, 'City', 'Room type'], default=[None], key='box_cat')
     
     fig2 = px.box(df1, x=col_histogram, color=box_cat)
-    fig2.update_layout(legend=dict(x=0.5, y=y_legend if country == 'United states' else 1.2, xanchor='center', yanchor='top', orientation="h"), height=600)
+    fig2.update_layout(legend=dict(x=0.5, y=1.2, xanchor='center', yanchor='top', orientation="h"), height=600)
     histogram = st.plotly_chart(fig2)
 
 
